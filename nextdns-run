@@ -1,0 +1,14 @@
+#!/bin/bash
+
+NEXTDNS_CONFIG_ID=$NEXTDNS_CONFIG
+NEXTDNS_ARGUMENTS="-listen :5053 -report-client-info -log-queries"
+
+/usr/sbin/dnsmasq
+
+if [ -n "$NEXTDNS_CONFIG" ]; then
+  NEXTDNS_ARGUMENTS+=" -config $NEXTDNS_CONFIG_ID"
+fi
+
+echo "Running nextdns with arguments: $NEXTDNS_ARGUMENTS"
+
+/usr/bin/nextdns run $NEXTDNS_ARGUMENTS
