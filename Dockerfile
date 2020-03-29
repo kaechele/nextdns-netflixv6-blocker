@@ -12,6 +12,6 @@ COPY dnsmasq.conf /etc/dnsmasq.conf
 COPY block-aaaa-netflix.conf /etc/dnsmasq.d/block-aaaa-netflix.conf
 
 HEALTHCHECK --interval=60s --timeout=10s --start-period=5s --retries=1 \
-	CMD dig +time=20 @127.0.0.1 -p 53 probe-test.dns.nextdns.io && dig +time=20 @127.0.0.1 -p 8053 probe-test.dns.nextdns.io
+	CMD dig +time=20 @127.0.0.1 -p 53 probe-test.dns.nextdns.io && dig +time=20 @127.0.0.1 -p 5053 probe-test.dns.nextdns.io
 
 CMD ["/usr/local/bin/nextdns-run"]
